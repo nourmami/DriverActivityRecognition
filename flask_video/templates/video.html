@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<style type="text/css">
+    body{
+        margin-top: 80px;
+  background-color: #041218;
+  color: white;
+  text-align: center;
+    }
+</style>
+<head>
+    <title>Activity Result</title>
+</head>
+<body>
+    <h1>Real Time Driver Activity</h1>
+    <img style="align-content: center;" src="{{ url_for('video_feed', video_path=video_path) }}">
+</body>
+</html>
