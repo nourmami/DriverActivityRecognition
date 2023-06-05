@@ -49,15 +49,15 @@ The project architecture consists of a Flask backend that exposes prediction end
 | result.html     | HTML template for the result page where the prediction results are displayed. |
 
 ## Deploying locally in kubernetes cluster (Minikube)
-### Pre-requirements 
+### Pre-requirements  [Access the file ](deployment/requirements.txt)
 * Minikube v1.29.0
 * Docker 20.10.23
 * kubectl  v5.0.1
-[Access the file ](deployment/requirements.txt)
 
 ### Dockerizing the flask api
 Create the Dockerfile that Docker will read to build and run the model:
-* Dockerfile.api
+* Dockerfile.api  [Access the file ](deployment/Dockerfile.api)
+
 ``` FROM python:3.9
 WORKDIR /FlaskApp
 COPY requirements.txt .
@@ -82,7 +82,7 @@ This instructs Docker to build a container for the code in your current working 
 
 ### Deploying the container to a k8s minikube cluster
 To run the container in the cluster, you need to create a deployment (deployment.yaml) and apply it to the cluster:  
-* Deployement.YAML
+* Deployement.YAML  [Access the file ](deployment/deployment.yaml)
 
 ``` minikube start ```
 
