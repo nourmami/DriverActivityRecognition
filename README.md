@@ -109,9 +109,9 @@ To check your services to determine the status of your deployment and get the IP
 
 ![Classes image examples](images/6.png)
 
-## Deploying in AKS (Azure kubernetes Service)
+## Deploying in AKS (Azure kubernetes Service)  [Access the Repo ](InfrastructureAKS)
 
-![Classes image examples](images/aks.png)
+![Classes image examples](images/aks.jpg)
 
 First, we utilize Terraform to provision the necessary infrastructure resources, including the AKS cluster, virtual networks, subnets, and storage accounts. This ensures the underlying infrastructure is in place to support our deployment.
 
