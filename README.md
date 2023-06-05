@@ -26,7 +26,8 @@ The StateFarm distraction-detection dataset is selected for our human activity p
 # Modeling 
 we used different Architecture like show above : 
 ![Classes image examples](images/model.png)
-[models](../PFA_Driver_Distraction_Detection.ipynb)
+
+[Access the Jupiter Notebook ](PFA_Driver_Distraction_Detection.ipynb)
 
 # Deployment 
 ## Project Architecture
@@ -48,11 +49,11 @@ The project architecture consists of a Flask backend that exposes prediction end
 | result.html     | HTML template for the result page where the prediction results are displayed. |
 
 ## Deploying locally in kubernetes cluster (Minikube)
-### Pre-requirements
+### Pre-requirements 
 * Minikube v1.29.0
 * Docker 20.10.23
 * kubectl  v5.0.1
-
+[Access the file ](deployment/requirements.txt)
 
 ### Dockerizing the flask api
 Create the Dockerfile that Docker will read to build and run the model:
