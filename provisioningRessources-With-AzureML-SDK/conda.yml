@@ -1,0 +1,9 @@
+name: yolov4-detection
+
+dependencies:
+  - python=3.8
+  - opencv
+  - pip
+  - pip:
+    - azureml-core
+    - azureml-dataprep[pandas]

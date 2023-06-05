@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubeflow-operator
+  namespace: kubeflow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: kubeflow-operator
+  template:
+    metadata:
+      labels:
+        name: kubeflow-operator
+    spec:
+      containers:
+      - name: kubeflow-operator
+        image: gcr.io/kubeflow/kfctl@sha256:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        command:
+        - "/usr/local/bin/kfctl"
+        args:
+        - "apply"
+        - "-f"
+        - "/opt/kubeflow/kfctl_azure_databricks.v1.3.0.yaml"
+        env:
+        - name: SECRET_NAME
+          value: "kf-secret"
+        volumeMounts:
+        - name: kf-secret
+          mountPath: "/etc/kubeflow"
+      volumes:
+      - name: kf-secret
+        secret:
+          secretName: kf-secret
