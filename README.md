@@ -49,6 +49,9 @@ The project architecture consists of a Flask backend that exposes prediction end
 | result.html     | HTML template for the result page where the prediction results are displayed. |
 
 ## Deploying locally in kubernetes cluster (Minikube)
+
+![Classes image examples](images/architecture1.png)
+
 ### Pre-requirements  [Access the file ](deployment/requirements.txt)
 * Minikube v1.29.0
 * Docker 20.10.23
@@ -105,3 +108,20 @@ To check your services to determine the status of your deployment and get the IP
 ``` kubectl get service ```
 
 ![Classes image examples](images/6.png)
+
+## Deploying in AKS (Azure kubernetes Service)
+
+![Classes image examples](images/aks.png)
+
+First, we utilize Terraform to provision the necessary infrastructure resources, including the AKS cluster, virtual networks, subnets, and storage accounts. This ensures the underlying infrastructure is in place to support our deployment.
+
+Next, we build the Docker image containing our application and the Deep learning model. We tag and push the Docker image to a container registry, such as Docker hub, making it accessible to the AKS cluster. 
+We then create Kubernetes manifests, that includes deployment configurations, such as the container image.
+Finally to monitor and to gain visibility into resource utilization of the deployed model we leverage Azure monitoring tools. 
+
+
+# Conclusion
+
+In our driver activity recognition project, we aimed to explore various machine learning techniques to develop an effective system. We utilized methods such as CNNs and Transfer Learning to analyze driver behavior and classify activities. The dataset we used was collected for a Computer Vision Competition, providing a solid foundation for training our models.
+
+To further improve our system, we identified several perspectives. Firstly, integrating \textbf{pose estimation} [13] techniques can enhance our understanding of driver activities by extracting detailed information about body posture and movements. This integration would complement the existing visual features and contribute to the accuracy and robustness of our system.
