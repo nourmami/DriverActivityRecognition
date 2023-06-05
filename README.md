@@ -27,11 +27,13 @@ The StateFarm distraction-detection dataset is selected for our human activity p
 we used different Architecture like show above : 
 ![Classes image examples](images/model.png)
 
+[Access the Jupiter Notebook ](PFA_Driver_Distraction_Detection.ipynb)
+
 # Deployment 
 ## Project Architecture
 The project architecture consists of a Flask backend that exposes prediction endpoints, a registered model for generating predictions, and a frontend that allows users to upload images and receive the prediction results from the backend.
-![Classes image examples](images/front_home.png)
-![Classes image examples](images/result.png)
+![Classes image examples](images/front_home.PNG)
+![Classes image examples](images/result.PNG)
 
 ## Project Hierarchy 
 ![Classes image examples](images/architecture.png)
@@ -47,15 +49,15 @@ The project architecture consists of a Flask backend that exposes prediction end
 | result.html     | HTML template for the result page where the prediction results are displayed. |
 
 ## Deploying locally in kubernetes cluster (Minikube)
-### Pre-requirements
+### Pre-requirements  [Access the file ](deployment/requirements.txt)
 * Minikube v1.29.0
 * Docker 20.10.23
 * kubectl  v5.0.1
 
-
 ### Dockerizing the flask api
 Create the Dockerfile that Docker will read to build and run the model:
-* Dockerfile.api
+* Dockerfile.api  [Access the file ](deployment/Dockerfile.api)
+
 ``` FROM python:3.9
 WORKDIR /FlaskApp
 COPY requirements.txt .
@@ -69,23 +71,37 @@ This Dockerfile can be broken down into three steps. First, it creates the Docke
 
 * Build the Docker container:
 ``` docker build -f Dockerfile.api -t flask-dl-api ```
+
+![Classes image examples](images/1.png)
+
 This instructs Docker to build a container for the code in your current working directory
 * Check that your container is working by running it on your local machine:
 ``` sudo docker run  -p 5000:5000 flask-dl-api ```
 
-### Deploying the container to a k8s cluster
+![Classes image examples](images/2.png)
+
+### Deploying the container to a k8s minikube cluster
 To run the container in the cluster, you need to create a deployment (deployment.yaml) and apply it to the cluster:  
-* Deployement.YAML
-``` ```
+* Deployement.YAML  [Access the file ](deployment/deployment.yaml)
 
 ``` minikube start ```
 
 ``` kubectl apply -f deployment.yaml ```
+
+![Classes image examples](images/3.png)
+![Classes image examples](images/33.png)
+
 ### Exposing the container deployment to the outside world
 ``` kubectl expose deployment kubermatic-dl-deployment  --type=LoadBalancer --port 80 --target-port 5000 ```
 
+![Classes image examples](images/4.png)
+
 ``` minikube tuneel ```
+
+![Classes image examples](images/5.png)
 
 To check your services to determine the status of your deployment and get the IP address to call your image recognition API:
 
 ``` kubectl get service ```
+
+![Classes image examples](images/6.png)
