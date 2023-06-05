@@ -31,7 +31,7 @@ we used different Architecture like show above :
 ## Project Architecture
 The project architecture consists of a Flask backend that exposes prediction endpoints, a registered model for generating predictions, and a frontend that allows users to upload images and receive the prediction results from the backend.
 ![Classes image examples](images/front_home.png)
-![Classes image examples](images/result.png)
+![Classes image examples](images/result.PNG)
 
 ## Project Hierarchy 
 ![Classes image examples](images/architecture.png)
@@ -69,9 +69,12 @@ This Dockerfile can be broken down into three steps. First, it creates the Docke
 
 * Build the Docker container:
 ``` docker build -f Dockerfile.api -t flask-dl-api ```
+![Classes image examples](images/1.png)
+
 This instructs Docker to build a container for the code in your current working directory
 * Check that your container is working by running it on your local machine:
 ``` sudo docker run  -p 5000:5000 flask-dl-api ```
+![Classes image examples](images/2.png)
 
 ### Deploying the container to a k8s cluster
 To run the container in the cluster, you need to create a deployment (deployment.yaml) and apply it to the cluster:  
@@ -81,11 +84,16 @@ To run the container in the cluster, you need to create a deployment (deployment
 ``` minikube start ```
 
 ``` kubectl apply -f deployment.yaml ```
+![Classes image examples](images/3.png)
+![Classes image examples](images/33.png)
+
 ### Exposing the container deployment to the outside world
 ``` kubectl expose deployment kubermatic-dl-deployment  --type=LoadBalancer --port 80 --target-port 5000 ```
-
+![Classes image examples](images/4.png)
 ``` minikube tuneel ```
+![Classes image examples](images/5.png)
 
 To check your services to determine the status of your deployment and get the IP address to call your image recognition API:
 
 ``` kubectl get service ```
+![Classes image examples](images/6.png)
