@@ -1,34 +1,34 @@
 # Define variables for the existing resource names
 variable "resource_group_name" {
   type = string
-  default = "PFA-rg"
+  default = ""
 }
 
 variable "storage_account_name" {
   type = string
-  default = "storage1account1pfa"
+  default = ""
 }
 
 variable "workspace_name" {
   type = string
-  default = "PFA-workspace"
+  default = ""
 }
 
 variable "aks_cluster_name" {
   type        = string
   description = "The name of the AKS cluster"
-  default     = "PFA-aks-cluster"
+  default     = ""
 }  
 variable "location" {
   type        = string
-  default     = "westeurope"
+  default     = ""
 }
 
 
 variable "aks_dns_prefix" {
   type        = string
   description = "The DNS prefix for the AKS cluster"
-  default     = "aks-cluster"
+  default     = ""
 }
 
 variable "aks_kubernetes_version" {
